@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo app</h1>
+    {% for todo in todos %}
+    Work:{{todo.work}}</br>
+    Time:{{todo.time}}</br>
+    <form action="/delete/{{todo.id}}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    {% endfor %}
+
+
+
+    <form action="/" method="post">
+        {% csrf_token %}
+        <input type="text" name="work" name="work" placeholder="work">
+        <input type="text" name="time" name="time" placeholder="time">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
